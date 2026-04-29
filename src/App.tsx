@@ -217,11 +217,11 @@ export default function App() {
 
   if (gameState.isGameOver && gameState.ending) {
     return (
-      <div className="min-h-screen bg-stone-950 flex items-center justify-center p-4 md:p-8 text-center font-serif">
+      <div className="min-h-dvh bg-stone-950 flex items-center justify-center p-4 md:p-8 text-center font-serif overflow-y-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl w-full bg-stone-900/40 border border-stone-800/50 rounded-3xl overflow-hidden shadow-2xl"
+          className="max-w-3xl w-full my-auto bg-stone-900/40 border border-stone-800/50 rounded-3xl overflow-hidden shadow-2xl"
         >
           <div className="relative h-64 md:h-80 overflow-hidden">
             <img 
@@ -263,13 +263,13 @@ export default function App() {
 
   if (gameState.showStartScreen) {
     return (
-      <div className="min-h-screen bg-stone-950 flex items-center justify-center p-4 md:p-8 font-serif text-stone-200">
+      <div className="min-h-dvh bg-stone-950 flex items-start md:items-center justify-center p-3 md:p-8 font-serif text-stone-200 overflow-y-auto">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-4xl w-full bg-stone-900/60 border border-stone-800/50 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md"
+          className="max-w-4xl w-full my-auto bg-stone-900/60 border border-stone-800/50 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md flex flex-col max-h-none md:max-h-[calc(100dvh-4rem)]"
         >
-          <div className="relative h-48 md:h-64 overflow-hidden">
+          <div className="relative h-40 sm:h-48 md:h-64 overflow-hidden">
             <img 
               src="https://picsum.photos/seed/petersburg/1200/400?grayscale&blur=2" 
               alt="Saint Petersburg"
@@ -277,15 +277,15 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent" />
-            <div className="absolute bottom-8 left-8">
-              <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-stone-100">
+            <div className="absolute left-5 right-5 bottom-5 md:left-8 md:right-auto md:bottom-8">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold uppercase tracking-tighter text-stone-100">
                 Преступление и Наказание
               </h1>
               <p className="text-stone-400 italic text-sm md:text-base mt-2">Визуальная новелла по мотивам Ф. М. Достоевского</p>
             </div>
           </div>
 
-          <div className="p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="flex-1 overflow-y-auto p-5 sm:p-6 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-6">
               <h2 className="text-2xl font-bold flex items-center gap-2 text-stone-100">
                 <Info className="w-6 h-6 text-blue-400" />
@@ -340,10 +340,10 @@ export default function App() {
             </div>
           </div>
 
-          <div className="p-8 border-t border-stone-800 bg-black/20 flex justify-center">
+          <div className="sticky bottom-0 p-5 md:p-8 border-t border-stone-800 bg-stone-950/90 backdrop-blur-md flex justify-center">
             <button 
               onClick={() => setGameState(prev => ({ ...prev, showStartScreen: false }))}
-              className="px-12 py-5 bg-stone-100 text-stone-950 rounded-full font-bold uppercase tracking-widest hover:bg-stone-200 transition-all flex items-center gap-3 active:scale-95"
+              className="w-full sm:w-auto justify-center px-6 sm:px-12 py-4 sm:py-5 bg-stone-100 text-stone-950 rounded-full font-bold uppercase tracking-widest hover:bg-stone-200 transition-all flex items-center gap-3 active:scale-95"
             >
               Начать путь
               <ArrowRight className="w-5 h-5" />
@@ -356,7 +356,7 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-hidden flex flex-col relative"
+      className="min-h-dvh bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-x-hidden flex flex-col relative"
     >
       {/* Atmospheric Background Layer */}
       <div 
@@ -369,13 +369,13 @@ export default function App() {
       />
 
       {/* Header / HUD */}
-      <header className="p-4 border-b border-stone-800 bg-stone-900/80 backdrop-blur-md flex justify-between items-center z-20 relative">
-        <div className="flex items-center gap-4 md:gap-8 grow">
+      <header className="sticky top-0 p-3 md:p-4 border-b border-stone-800 bg-stone-900/80 backdrop-blur-md flex justify-between items-center gap-3 z-20 relative">
+        <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-8 grow">
           <div className="hidden lg:block pr-4 border-r border-stone-800">
             <h2 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-bold">Раскольников</h2>
           </div>
           
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 md:gap-6">
             <div className="flex items-center gap-2" title="Вина">
             <Skull className={cn("w-4 h-4 md:w-5 md:h-5 transition-colors", gameState.guilt > 50 ? "text-red-600" : "text-stone-500")} />
             <div className="w-16 md:w-24 h-1.5 md:h-2 bg-stone-800 rounded-full overflow-hidden">
@@ -417,7 +417,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 shrink-0">
           <button 
             onClick={resetGame}
             className="p-2 hover:bg-stone-800 rounded-full transition-colors"
@@ -457,7 +457,7 @@ export default function App() {
       </header>
 
       {/* Main Narrative Area */}
-      <main className="flex-1 relative flex flex-col items-center justify-center p-4 md:p-8 overflow-hidden">
+      <main className="flex-1 relative flex flex-col items-center justify-start md:justify-center p-3 md:p-8 overflow-y-auto">
         <AnimatePresence mode="wait">
           {currentScene && (
             <motion.div
@@ -465,11 +465,11 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="w-full max-w-4xl bg-stone-900/40 backdrop-blur-md border border-stone-800 rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
+              className="w-full max-w-4xl my-0 md:my-auto bg-stone-900/40 backdrop-blur-md border border-stone-800 rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
             >
               {/* Scene Visual / Location Info */}
               <div className={cn(
-                "w-full md:w-1/3 p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-stone-800",
+                "w-full md:w-1/3 p-5 md:p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-stone-800",
                 LOCATIONS[gameState.currentLocation].color.replace('bg-', 'bg-opacity-20 bg-')
               )}>
                 <div className="space-y-4">
@@ -492,7 +492,7 @@ export default function App() {
               </div>
 
               {/* Narrative Content */}
-              <div className="flex-1 p-6 md:p-10 flex flex-col">
+              <div className="flex-1 p-5 md:p-10 flex flex-col">
                 <div className="flex-1 space-y-8">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-stone-500 text-[10px] uppercase tracking-widest">
@@ -597,7 +597,7 @@ export default function App() {
                   </div>
                 </div>
                 
-                <footer className="mt-8 pt-6 border-t border-stone-800/50 flex justify-between items-center text-[10px] uppercase tracking-widest text-stone-600">
+                <footer className="mt-8 pt-6 border-t border-stone-800/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-[10px] uppercase tracking-widest text-stone-600">
                   <span>Санкт-Петербург, 1866</span>
                   <span>День {gameState.day}</span>
                 </footer>
