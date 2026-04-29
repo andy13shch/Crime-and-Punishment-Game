@@ -356,7 +356,7 @@ export default function App() {
 
   return (
     <div 
-      className="h-dvh bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-hidden flex flex-col relative"
+      className="h-dvh min-h-0 bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-hidden flex flex-col relative"
     >
       {/* Atmospheric Background Layer */}
       <div 
@@ -457,7 +457,7 @@ export default function App() {
       </header>
 
       {/* Main Narrative Area */}
-      <main className="flex-1 relative flex flex-col items-center justify-start md:justify-center p-3 md:p-8 overflow-y-auto">
+      <main className="flex-1 min-h-0 relative flex flex-col items-center justify-start md:justify-center p-3 md:p-8 overflow-y-auto">
         <AnimatePresence mode="wait">
           {currentScene && (
             <motion.div
