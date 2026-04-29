@@ -356,7 +356,7 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-dvh bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-x-hidden flex flex-col relative"
+      className="h-dvh bg-stone-950 text-stone-200 font-serif selection:bg-red-900 selection:text-white overflow-hidden flex flex-col relative"
     >
       {/* Atmospheric Background Layer */}
       <div 
@@ -369,7 +369,7 @@ export default function App() {
       />
 
       {/* Header / HUD */}
-      <header className="sticky top-0 p-3 md:p-4 border-b border-stone-800 bg-stone-900/80 backdrop-blur-md flex justify-between items-center gap-3 z-20 relative">
+      <header className="sticky top-0 shrink-0 p-3 md:p-4 border-b border-stone-800 bg-stone-900/80 backdrop-blur-md flex justify-between items-center gap-3 z-20 relative">
         <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-8 grow">
           <div className="hidden lg:block pr-4 border-r border-stone-800">
             <h2 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-bold">Раскольников</h2>
